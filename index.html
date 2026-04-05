@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diofdev – Partenaire technologique en Afrique</title>
+    <!-- Balises Open Graph pour crédibilité -->
+    <meta property="og:title" content="Diofdev – Partenaire technologique en Afrique">
+    <meta property="og:description" content="Solutions numériques sur mesure pour entreprises, institutions et startups.">
+    <meta property="og:type" content="website">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .bg-light {
+            background-color: #f8fafc;
+        }
+        
+        .highlight {
+            color: #2563eb;
+        }
+        
+        /* Navigation */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+        }
+        
+        .since {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-left: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .burger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #334155;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0f172a;
+            border-color: white;
+        }
+        
+        /* Sections headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #475569;
+            font-size: 1.1rem;
+        }
+        
+        /* Services grid (réutilisé pour partenariats et engagement) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .service-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+        
+        .service-card p {
+            color: #475569;
+        }
+        
+        /* About */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+        }
+        
+        .about-stats {
+            flex: 1;
+            min-width: 250px;
+            background: #2563eb;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat {
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .stat span:last-child {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .about-stats small {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        
+        .portfolio-info p {
+            color: #475569;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .btn-small {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-small:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            width: 24px;
+            color: #2563eb;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #334155;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #2563eb;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .contact-form button {
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+        
+            .nav-links.active {
+                display: flex;
+            }
+        
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        
+            .burger {
+                display: block;
+            }
+        
+            .hero-title {
+                font-size: 2rem;
+            }
+        
+            .hero-description {
+                font-size: 1rem;
+            }
+        
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        
+            .about-content {
+                flex-direction: column;
+            }
+        
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Diof<span class="highlight">dev</span></h1>
+                <span class="since">Depuis 2015</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#partenariats">Partenariats</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#portfolio">Réalisations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Accueil (Hero) -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Partenaire technologique pour des solutions numériques durables
+            </h1>
+            <p class="hero-description">
+                Depuis 2015, Diofdev accompagne entreprises, institutions et startups 
+                dans la conception, le développement et la mise à l’échelle de solutions digitales 
+                à fort impact. Nous co-construisons avec nos partenaires des solutions fiables, 
+                évolutives et alignées sur leurs enjeux stratégiques.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Devenir partenaire</a>
+                <a href="#portfolio" class="btn btn-outline">Découvrir nos références</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre <span class="highlight">expertise</span></h2>
+                <p>Des compétences techniques au service de vos ambitions</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement web</h3>
+                    <p>Sites vitrines, plateformes e‑commerce, applications métiers, interfaces d'administration.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Applications mobiles</h3>
+                    <p>iOS et Android (natif ou cross‑platform) – expériences utilisateur fluides et performantes.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Solutions sur mesure</h3>
+                    <p>Logiciels de gestion, API, intégration de bases de données, architecture cloud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle section : Partenariats -->
+    <section id="partenariats" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos <span class="highlight">partenariats</span></h2>
+                <p>Nous croyons aux collaborations stratégiques et durables</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Entreprises & Groupes</h3>
+                    <p>Externalisation technique, innovation digitale, co-développement et transformation numérique.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Institutions & ONG</h3>
+                    <p>Digitalisation de services publics, plateformes métiers, solutions à impact social.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Startups</h3>
+                    <p>Développement MVP, accompagnement technique long terme, mise à l’échelle.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Agences & ESN</h3>
+                    <p>Sous-traitance qualifiée, renfort d’équipe, projets collaboratifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="apropos" class="about section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Qui sommes-<span class="highlight">nous ?</span></h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Fondée en 2015, <strong>Diofdev</strong> est une entreprise passionnée par l’innovation technologique.
+                        Nous accompagnons les entrepreneurs, les PME et les institutions dans leur transformation digitale.
+                    </p>
+                    <p>
+                        Notre approche repose sur une méthodologie structurée :
+                        analyse des besoins, cadrage stratégique, architecture technique,
+                        développement agile, tests qualité et accompagnement post-déploiement.
+                    </p>
+                    <p>
+                        Nous intervenons comme partenaire technique et stratégique,
+                        capable d’anticiper les enjeux, sécuriser les choix technologiques
+                        et assurer la pérennité des solutions livrées.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="number">+50</span>
+                        <span>projets livrés</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">100%</span>
+                        <span>clients satisfaits</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">10</span>
+                        <span>ans d'expérience</span>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <small>Basé à Dakar – Interventions nationales et internationales.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle section : Mission / Vision / Valeurs -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre <span class="highlight">engagement</span></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Mission</h3>
+                    <p>Concevoir et déployer des solutions numériques qui améliorent durablement la performance des organisations.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Vision</h3>
+                    <p>Devenir un acteur technologique africain de référence, reconnu pour la qualité de ses partenariats.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Valeurs</h3>
+                    <p>Exigence technique, fiabilité, transparence, collaboration durable et innovation utile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Portfolio / Réalisations -->
+    <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Réalisations <span class="highlight">marquantes</span></h2>
+                <p>Quelques projets qui ont fait la différence</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="logo.png" alt="Application COMPO">
+                    <div class="portfolio-info">
+                        <h3>COMPO</h3>
+                        <p>Application de gestion scolaire (bulletins automatiques, rapports). Utilisée par des écoles publiques et privées en Afrique de l'Ouest.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.diofdev.compo" target="_blank" class="btn-small">Voir sur Play Store</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="agrise1.png" alt="Projet 2">
+                    <div class="portfolio-info">
+                        <h3>AGRISE</h3>
+                        <p>Agrise est une plateforme cronstruite pour rassembler tous les acteurs du domaine de l'agriculture et du foncier.</p>
+                        <a href="https://agrise-7291a.web.app/" class="btn-small">Étude de cas</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="CompressJPEG.Online_img(512x512) (1).jpg" alt="Projet 3">
+                    <div class="portfolio-info">
+                        <h3>XOTAAM</h3>
+                        <p>Application pour faciliter aux clients de trouver des chauffeurs professionnels.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.diofdev.xotaam" class="btn-small">Étude de cas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Construisons un <span class="highlight">partenariat durable</span></h2>
+                <p>
+                    Vous êtes une entreprise, une institution ou une organisation
+                    à la recherche d’un partenaire technologique fiable ?
+                    Échangeons sur vos enjeux et explorons les opportunités de collaboration.
+                </p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> alioune.senghor1@education.sn</p>
+                    <p><i class="fas fa-phone"></i> +221 77 200 21 82</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</p>
+                    <div class="social-links">
+                        <a href="https://chat.whatsapp.com/JWixlguboyUCMfa1fsNjfV" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" action="#" method="post">
+                    <input type="text" name="nom" placeholder="Votre nom" required>
+                    <input type="email" name="email" placeholder="Votre email" required>
+                    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Diofdev – Tous droits réservés. | <a href="#">Mentions légales</a></p>
+    </footer>
+
+    <script>
+        // Menu burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Fermer le menu après clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script> 
+	<script src='app.obf.js'></script>
+</body>
+</html>
