@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Compo – Gestion scolaire simplifiée</title>
-    <!-- Font Awesome -->
+    <title>Compo – Gestion scolaire automatisée</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,21 +12,18 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
             color: #1e293b;
             background: #f8fafc;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
-
-        /* Header / Navigation */
+        /* Header */
         header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -39,12 +36,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            flex-wrap: wrap;
         }
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo svg {
+            width: 48px;
+            height: 48px;
+        }
+        .logo-text {
             font-size: 1.8rem;
             font-weight: 700;
         }
-        .logo span {
+        .logo-text span {
             color: #2563eb;
         }
         .nav-links a {
@@ -62,13 +69,18 @@
                 display: none;
             }
         }
-
         /* Hero */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
             padding: 80px 0;
             text-align: center;
+        }
+        .hero-logo svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
         }
         .hero h1 {
             font-size: 2.8rem;
@@ -79,13 +91,6 @@
             max-width: 700px;
             margin: 0 auto 2rem;
             opacity: 0.9;
-        }
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
         }
         .btn-store {
             display: inline-flex;
@@ -98,6 +103,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.2s, background 0.2s;
+            margin: 0 8px;
         }
         .btn-store i {
             font-size: 1.8rem;
@@ -114,8 +120,6 @@
             background: white;
             color: #0f172a;
         }
-
-        /* Sections */
         .section {
             padding: 80px 0;
         }
@@ -127,6 +131,45 @@
         }
         .section-title span {
             color: #2563eb;
+        }
+        .problem-solution {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card li i {
+            color: #2563eb;
+            width: 24px;
         }
         .features-grid {
             display: grid;
@@ -149,55 +192,88 @@
             color: #2563eb;
             margin-bottom: 1rem;
         }
-        .feature-card h3 {
-            margin-bottom: 0.5rem;
+        /* Bulletin preview */
+        .bulletin-preview {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
         }
-
-        /* Plateformes */
-        .platforms {
+        .bulletin-card {
             background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
         }
-        .platform-grid {
+        .bulletin-header {
+            background: #0f172a;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        .bulletin-body {
+            padding: 20px;
+        }
+        .bulletin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .bulletin-table th, .bulletin-table td {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            text-align: left;
+        }
+        .bulletin-table th {
+            background: #e2e8f0;
+        }
+        .signature {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+        }
+        .download-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 3rem;
+            gap: 30px;
+        }
+        .download-card {
             text-align: center;
-        }
-        .platform-item {
-            flex: 1;
-            min-width: 200px;
-        }
-        .platform-icon {
-            font-size: 3rem;
-            color: #2563eb;
-            margin-bottom: 1rem;
-        }
-        .qrcode {
-            margin-top: 1rem;
             background: white;
+            padding: 30px 20px;
+            border-radius: 24px;
+            min-width: 200px;
+            flex: 1;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .download-card i {
+            font-size: 3rem;
+        }
+        .btn-download {
             display: inline-block;
-            padding: 10px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
         }
-        .qrcode img {
-            width: 120px;
-            height: 120px;
-        }
-
-        /* Footer */
         footer {
             background: #0f172a;
             color: #94a3b8;
             text-align: center;
             padding: 2rem;
         }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .section { padding: 50px 0; }
-            .platform-grid { flex-direction: column; align-items: center; }
+            .bulletin-table th, .bulletin-table td { padding: 6px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -206,241 +282,189 @@
 <header>
     <div class="container">
         <div class="navbar">
-            <div class="logo">Compo<span>.</span></div>
+            <div class="logo">
+                <!-- Logo SVG inline -->
+                <svg width="48" height="48" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 5120 l0 -5120 5120 0 5120 0 0 5120 0 5120 -5120 0 -5120 0 0 -5120z m4940 3285 c59 -31 93 -117 58 -151 -7 -6 -58 -19 -113 -28 -55 -9 -176 -30 -270 -47 -93 -17 -233 -42 -310 -55 -269 -47 -379 -73 -397 -94 -9 -11 -25 -59 -37 -106 -11 -47 -27 -96 -35 -109 -15 -22 -14 -25 11 -43 16 -11 23 -24 19 -31 -10 -15 -34 4 -47 36 -5 13 -13 23 -19 23 -15 0 -12 -11 11 -49 14 -24 25 -32 39 -28 11 3 22 2 25 -3 8 -13 -7 -100 -16 -95 -4 3 -12 -3 -18 -12 -5 -10 -13 -14 -18 -10 -4 5 0 22 10 39 10 17 15 33 12 37 -10 9 -43 -41 -47 -71 -4 -28 12 -54 25 -41 4 3 7 -2 7 -11 0 -13 5 -16 18 -11 14 5 15 4 5 -6 -19 -19 -18 -368 1 -412 21 -52 61 -87 159 -143 51 -29 91 -57 89 -64 -1 -6 -4 -139 -6 -293 -2 -155 -9 -311 -16 -347 -22 -120 -97 -233 -183 -274 -44 -20 -129 -21 -172 0 -78 37 -150 142 -174 254 -15 70 -15 388 0 499 7 47 18 99 26 114 8 16 12 31 9 34 -9 9 -130 -53 -212 -108 -349 -234 -642 -545 -858 -909 -158 -267 -253 -506 -326 -826 -124 -545 -56 -1216 178 -1744 151 -342 361 -644 618 -890 210 -201 448 -371 706 -505 218 -112 406 -186 643 -250 33 -9 89 -25 125 -36 88 -26 405 -77 595 -95 39 -4 64 -9 56 -12 -32 -11 -627 38 -831 69 -223 33 -655 149 -785 209 -11 6 -50 21 -87 35 -71 26 -256 115 -373 180 -374 206 -754 546 -1008 903 -359 504 -537 1077 -537 1726 0 676 224 1337 633 1868 246 320 549 594 886 802 146 90 396 213 526 258 17 6 37 14 46 19 15 7 16 3 8 -29 -14 -59 -10 -195 6 -248 14 -44 45 -180 63 -273 l7 -34 28 36 c15 21 25 42 22 47 -4 6 -3 10 2 9 4 -1 23 4 41 12 l32 13 0 214 c0 205 -1 214 -20 219 -22 6 -28 47 -9 59 8 5 8 9 -1 14 -8 5 -3 10 13 14 46 11 46 81 0 92 -16 5 -21 9 -13 14 9 6 9 10 -3 16 -8 5 -16 17 -18 27 -5 21 -22 24 -27 5 -3 -11 -2 -10 6 0 7 11 11 8 14 -12 4 -22 2 -26 -18 -26 -33 0 -37 14 -11 46 12 16 23 40 24 54 4 72 46 296 59 321 24 47 81 64 359 109 324 53 528 87 625 104 101 19 136 19 170 1z m-2565 -891 c31 -53 95 -101 146 -109 39 -7 45 -25 8 -25 -50 0 -137 -68 -170 -132 -10 -20 -21 -54 -25 -77 -7 -42 -24 -47 -24 -8 0 37 -45 120 -81 152 -31 27 -75 50 -134 70 -16 6 -9 10 33 23 75 24 120 64 153 138 16 35 29 74 29 87 0 47 15 37 27 -20 8 -31 25 -76 38 -99z m4413 -99 c31 -24 71 -47 88 -51 17 -3 56 -24 85 -47 30 -22 92 -66 139 -98 359 -239 688 -576 927 -948 103 -161 177 -299 248 -466 87 -202 175 -504 178 -611 1 -29 5 -50 8 -48 10 6 19 -75 29 -251 11 -195 11 -333 0 -185 -4 52 -9 138 -11 190 -1 52 -6 -26 -9 -175 -4 -148 -11 -288 -17 -310 -6 -22 -16 -81 -23 -132 -7 -51 -16 -90 -20 -88 -7 4 -37 -103 -32 -117 1 -5 -2 -8 -7 -8 -5 0 -11 -11 -13 -25 -3 -13 -1 -22 3 -19 13 8 9 -35 -6 -81 l-14 -40 5 35 c4 29 3 32 -7 17 -6 -11 -9 -30 -6 -43 3 -20 2 -22 -9 -13 -11 9 -14 8 -14 -5 0 -9 -4 -16 -10 -16 -5 0 -12 -16 -16 -35 -3 -19 -10 -35 -14 -35 -4 0 -11 -10 -15 -22 -11 -33 -12 -38 -15 -40 -1 -2 -4 -16 -6 -33 -7 -41 -36 -105 -48 -105 -5 0 -6 -3 -3 -6 6 -7 -60 -106 -75 -112 -5 -2 -8 -8 -8 -14 0 -6 -11 -21 -25 -33 -13 -13 -40 -48 -60 -79 -20 -31 -42 -56 -50 -56 -9 0 -15 -9 -15 -22 0 -29 -28 -58 -57 -58 -21 0 -28 -10 -24 -34 1 -5 -5 -16 -14 -26 -13 -14 -13 -19 -3 -23 8 -4 7 -6 -4 -6 -10 -1 -18 -5 -18 -10 0 -4 -10 -19 -22 -33 -53 -58 -68 -79 -73 -101 -4 -13 -24 -42 -45 -64 -21 -23 -41 -50 -44 -61 -4 -12 -22 -38 -41 -59 -19 -21 -35 -41 -35 -45 0 -4 -9 -16 -20 -26 -11 -10 -21 -34 -24 -53 -3 -27 -7 -33 -23 -31 -13 2 -29 -9 -44 -28 -22 -27 -59 -41 -59 -22 0 4 9 39 20 77 11 38 20 77 19 85 0 8 -5 0 -10 -19 -6 -18 -12 -32 -14 -30 -5 5 98 416 106 424 4 3 -4 -36 -16 -87 -12 -51 -25 -111 -29 -133 -14 -73 2 -32 28 77 15 59 35 128 46 153 26 60 25 68 -1 30 -12 -16 -18 -21 -14 -10 4 11 16 43 25 70 10 28 38 100 62 160 25 61 58 148 73 194 15 46 31 78 34 72 4 -6 7 3 7 21 0 18 17 96 36 173 76 293 103 529 95 820 -16 546 -179 1028 -520 1534 -60 89 -77 107 -119 126 -47 22 -87 60 -89 87 -1 7 -5 2 -9 -12 -5 -15 -8 28 -7 107 1 159 -6 173 -85 173 -61 0 -84 -22 -93 -87 -12 -90 -13 -90 -88 -28 -31 25 -61 45 -67 45 -5 0 -40 30 -76 66 -46 46 -64 70 -59 82 3 9 3 13 -1 9 -8 -8 -74 51 -74 66 0 4 8 7 18 6 9 -1 20 0 25 1 4 1 11 3 16 4 5 0 24 12 41 24 l32 24 -2 191 c-2 171 7 357 16 357 2 0 30 -20 62 -45z m-5115 -216 c11 -103 84 -186 187 -212 57 -15 79 -37 36 -37 -35 0 -126 -37 -154 -63 -40 -37 -62 -83 -70 -143 -4 -32 -11 -57 -17 -54 -5 2 -18 29 -28 59 -34 109 -114 184 -215 200 -46 8 -42 24 10 37 110 28 182 101 208 214 21 92 34 92 43 -1z m6885 -4116 c27 -51 75 -91 143 -119 l52 -21 -47 -12 c-95 -24 -159 -84 -172 -161 -3 -19 -9 -44 -14 -55 -7 -18 -8 -17 -15 10 -26 114 -114 205 -199 205 -36 0 -42 18 -9 26 104 25 202 136 203 230 0 52 14 48 25 -8 6 -29 21 -72 33 -95z m-394 -529 c31 -46 94 -92 148 -108 l43 -12 -41 -7 c-96 -16 -180 -108 -191 -212 -3 -25 -8 -45 -12 -45 -3 0 -12 24 -19 52 -19 83 -58 137 -122 169 -30 16 -68 31 -85 35 l-30 6 37 12 c100 35 178 110 192 187 20 102 17 100 38 26 10 -38 29 -84 42 -103z" fill="white"/>
+                </svg>
+                <div class="logo-text">Compo<span>.</span></div>
+            </div>
             <div class="nav-links">
+                <a href="#probleme">Problème</a>
+                <a href="#solution">Solution</a>
                 <a href="#features">Fonctionnalités</a>
-                <a href="#download">Téléchargement</a>
-                <a href="#contact">Contact</a>
+                <a href="#bulletin">Exemple</a>
+                <a href="#download">Télécharger</a>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Hero -->
+<!-- Hero avec logo -->
 <section class="hero">
     <div class="container">
+        <div class="hero-logo">
+            <svg width="100" height="100" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 5120 l0 -5120 5120 0 5120 0 0 5120 0 5120 -5120 0 -5120 0 0 -5120z m4940 3285 c59 -31 93 -117 58 -151 -7 -6 -58 -19 -113 -28 -55 -9 -176 -30 -270 -47 -93 -17 -233 -42 -310 -55 -269 -47 -379 -73 -397 -94 -9 -11 -25 -59 -37 -106 -11 -47 -27 -96 -35 -109 -15 -22 -14 -25 11 -43 16 -11 23 -24 19 -31 -10 -15 -34 4 -47 36 -5 13 -13 23 -19 23 -15 0 -12 -11 11 -49 14 -24 25 -32 39 -28 11 3 22 2 25 -3 8 -13 -7 -100 -16 -95 -4 3 -12 -3 -18 -12 -5 -10 -13 -14 -18 -10 -4 5 0 22 10 39 10 17 15 33 12 37 -10 9 -43 -41 -47 -71 -4 -28 12 -54 25 -41 4 3 7 -2 7 -11 0 -13 5 -16 18 -11 14 5 15 4 5 -6 -19 -19 -18 -368 1 -412 21 -52 61 -87 159 -143 51 -29 91 -57 89 -64 -1 -6 -4 -139 -6 -293 -2 -155 -9 -311 -16 -347 -22 -120 -97 -233 -183 -274 -44 -20 -129 -21 -172 0 -78 37 -150 142 -174 254 -15 70 -15 388 0 499 7 47 18 99 26 114 8 16 12 31 9 34 -9 9 -130 -53 -212 -108 -349 -234 -642 -545 -858 -909 -158 -267 -253 -506 -326 -826 -124 -545 -56 -1216 178 -1744 151 -342 361 -644 618 -890 210 -201 448 -371 706 -505 218 -112 406 -186 643 -250 33 -9 89 -25 125 -36 88 -26 405 -77 595 -95 39 -4 64 -9 56 -12 -32 -11 -627 38 -831 69 -223 33 -655 149 -785 209 -11 6 -50 21 -87 35 -71 26 -256 115 -373 180 -374 206 -754 546 -1008 903 -359 504 -537 1077 -537 1726 0 676 224 1337 633 1868 246 320 549 594 886 802 146 90 396 213 526 258 17 6 37 14 46 19 15 7 16 3 8 -29 -14 -59 -10 -195 6 -248 14 -44 45 -180 63 -273 l7 -34 28 36 c15 21 25 42 22 47 -4 6 -3 10 2 9 4 -1 23 4 41 12 l32 13 0 214 c0 205 -1 214 -20 219 -22 6 -28 47 -9 59 8 5 8 9 -1 14 -8 5 -3 10 13 14 46 11 46 81 0 92 -16 5 -21 9 -13 14 9 6 9 10 -3 16 -8 5 -16 17 -18 27 -5 21 -22 24 -27 5 -3 -11 -2 -10 6 0 7 11 11 8 14 -12 4 -22 2 -26 -18 -26 -33 0 -37 14 -11 46 12 16 23 40 24 54 4 72 46 296 59 321 24 47 81 64 359 109 324 53 528 87 625 104 101 19 136 19 170 1z m-2565 -891 c31 -53 95 -101 146 -109 39 -7 45 -25 8 -25 -50 0 -137 -68 -170 -132 -10 -20 -21 -54 -25 -77 -7 -42 -24 -47 -24 -8 0 37 -45 120 -81 152 -31 27 -75 50 -134 70 -16 6 -9 10 33 23 75 24 120 64 153 138 16 35 29 74 29 87 0 47 15 37 27 -20 8 -31 25 -76 38 -99z m4413 -99 c31 -24 71 -47 88 -51 17 -3 56 -24 85 -47 30 -22 92 -66 139 -98 359 -239 688 -576 927 -948 103 -161 177 -299 248 -466 87 -202 175 -504 178 -611 1 -29 5 -50 8 -48 10 6 19 -75 29 -251 11 -195 11 -333 0 -185 -4 52 -9 138 -11 190 -1 52 -6 -26 -9 -175 -4 -148 -11 -288 -17 -310 -6 -22 -16 -81 -23 -132 -7 -51 -16 -90 -20 -88 -7 4 -37 -103 -32 -117 1 -5 -2 -8 -7 -8 -5 0 -11 -11 -13 -25 -3 -13 -1 -22 3 -19 13 8 9 -35 -6 -81 l-14 -40 5 35 c4 29 3 32 -7 17 -6 -11 -9 -30 -6 -43 3 -20 2 -22 -9 -13 -11 9 -14 8 -14 -5 0 -9 -4 -16 -10 -16 -5 0 -12 -16 -16 -35 -3 -19 -10 -35 -14 -35 -4 0 -11 -10 -15 -22 -11 -33 -12 -38 -15 -40 -1 -2 -4 -16 -6 -33 -7 -41 -36 -105 -48 -105 -5 0 -6 -3 -3 -6 6 -7 -60 -106 -75 -112 -5 -2 -8 -8 -8 -14 0 -6 -11 -21 -25 -33 -13 -13 -40 -48 -60 -79 -20 -31 -42 -56 -50 -56 -9 0 -15 -9 -15 -22 0 -29 -28 -58 -57 -58 -21 0 -28 -10 -24 -34 1 -5 -5 -16 -14 -26 -13 -14 -13 -19 -3 -23 8 -4 7 -6 -4 -6 -10 -1 -18 -5 -18 -10 0 -4 -10 -19 -22 -33 -53 -58 -68 -79 -73 -101 -4 -13 -24 -42 -45 -64 -21 -23 -41 -50 -44 -61 -4 -12 -22 -38 -41 -59 -19 -21 -35 -41 -35 -45 0 -4 -9 -16 -20 -26 -11 -10 -21 -34 -24 -53 -3 -27 -7 -33 -23 -31 -13 2 -29 -9 -44 -28 -22 -27 -59 -41 -59 -22 0 4 9 39 20 77 11 38 20 77 19 85 0 8 -5 0 -10 -19 -6 -18 -12 -32 -14 -30 -5 5 98 416 106 424 4 3 -4 -36 -16 -87 -12 -51 -25 -111 -29 -133 -14 -73 2 -32 28 77 15 59 35 128 46 153 26 60 25 68 -1 30 -12 -16 -18 -21 -14 -10 4 11 16 43 25 70 10 28 38 100 62 160 25 61 58 148 73 194 15 46 31 78 34 72 4 -6 7 3 7 21 0 18 17 96 36 173 76 293 103 529 95 820 -16 546 -179 1028 -520 1534 -60 89 -77 107 -119 126 -47 22 -87 60 -89 87 -1 7 -5 2 -9 -12 -5 -15 -8 28 -7 107 1 159 -6 173 -85 173 -61 0 -84 -22 -93 -87 -12 -90 -13 -90 -88 -28 -31 25 -61 45 -67 45 -5 0 -40 30 -76 66 -46 46 -64 70 -59 82 3 9 3 13 -1 9 -8 -8 -74 51 -74 66 0 4 8 7 18 6 9 -1 20 0 25 1 4 1 11 3 16 4 5 0 24 12 41 24 l32 24 -2 191 c-2 171 7 357 16 357 2 0 30 -20 62 -45z m-5115 -216 c11 -103 84 -186 187 -212 57 -15 79 -37 36 -37 -35 0 -126 -37 -154 -63 -40 -37 -62 -83 -70 -143 -4 -32 -11 -57 -17 -54 -5 2 -18 29 -28 59 -34 109 -114 184 -215 200 -46 8 -42 24 10 37 110 28 182 101 208 214 21 92 34 92 43 -1z m6885 -4116 c27 -51 75 -91 143 -119 l52 -21 -47 -12 c-95 -24 -159 -84 -172 -161 -3 -19 -9 -44 -14 -55 -7 -18 -8 -17 -15 10 -26 114 -114 205 -199 205 -36 0 -42 18 -9 26 104 25 202 136 203 230 0 52 14 48 25 -8 6 -29 21 -72 33 -95z m-394 -529 c31 -46 94 -92 148 -108 l43 -12 -41 -7 c-96 -16 -180 -108 -191 -212 -3 -25 -8 -45 -12 -45 -3 0 -12 24 -19 52 -19 83 -58 137 -122 169 -30 16 -68 31 -85 35 l-30 6 37 12 c100 35 178 110 192 187 20 102 17 100 38 26 10 -38 29 -84 42 -103z" fill="white"/>
+            </svg>
+        </div>
         <h1>Gérez votre établissement scolaire simplement</h1>
-        <p>Bulletins automatiques, relevés de notes, gestion des classes et bien plus. Compo accompagne les écoles publiques et privées en Afrique de l'Ouest.</p>
-        <div class="badge-container" id="dynamic-buttons">
-            <!-- Les boutons seront injectés dynamiquement selon la plateforme -->
+        <p>Bulletins automatiques, calculs précis, suivi des élèves. L'outil numérique pensé pour les enseignants africains.</p>
+        <div id="dynamic-buttons"></div>
+    </div>
+</section>
+
+<!-- Section Problème & Solution -->
+<section id="probleme" class="section">
+    <div class="container">
+        <h2 class="section-title">Le <span>problème</span> & la <span>solution</span></h2>
+        <div class="problem-solution">
+            <div class="card">
+                <h3><i class="fas fa-exclamation-triangle" style="color:#e74c3c;"></i> Problème</h3>
+                <ul>
+                    <li><i class="fas fa-times-circle"></i> Calculs manuels & erreurs fréquentes</li>
+                    <li><i class="fas fa-clock"></i> Heures perdues à préparer les bulletins</li>
+                    <li><i class="fas fa-chart-line"></i> Absence de suivi individualisé</li>
+                    <li><i class="fas fa-stress"></i> Stress & surcharge administrative</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-lightbulb" style="color:#f1c40f;"></i> Solution COMPO</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Calculs automatiques 100% fiables</li>
+                    <li><i class="fas fa-file-pdf"></i> Génération instantanée de bulletins professionnels</li>
+                    <li><i class="fas fa-chart-simple"></i> Classements, moyennes trimestrielles et annuelles</li>
+                    <li><i class="fas fa-mobile-alt"></i> Application simple, rapide, accessible hors ligne</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Fonctionnalités -->
-<section id="features" class="section">
+<!-- Section Fonctionnalités -->
+<section id="features" class="section bg-light">
     <div class="container">
-        <h2 class="section-title">Pourquoi <span>Compo</span> ?</h2>
+        <h2 class="section-title">Fonctionnalités <span>clés</span></h2>
         <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-chalkboard-user"></i>
-                <h3>Gestion des classes</h3>
-                <p>Élèves, professeurs, emplois du temps centralisés.</p>
+            <div class="feature-card"><i class="fas fa-calculator"></i><h3>Calcul automatique</h3><p>Moyennes, coefficients, cumuls, absence gérée.</p></div>
+            <div class="feature-card"><i class="fas fa-print"></i><h3>Bulletins PDF</h3><p>Génération professionnelle, prête à imprimer.</p></div>
+            <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Suivi des progrès</h3><p>Évolution trimestrielle et classement.</p></div>
+            <div class="feature-card"><i class="fas fa-cloud-upload-alt"></i><h3>Synchronisation cloud</h3><p>Accès multi‑appareils, sauvegarde sécurisée.</p></div>
+            <div class="feature-card"><i class="fas fa-language"></i><h3>Adapté au contexte africain</h3><p>Notations locales, programmes officiels.</p></div>
+            <div class="feature-card"><i class="fas fa-headset"></i><h3>Support prioritaire</h3><p>Assistance rapide et formation incluse.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Exemple bulletin -->
+<section id="bulletin" class="section">
+    <div class="container">
+        <h2 class="section-title">Exemple de <span>bulletin généré</span></h2>
+        <div class="bulletin-preview">
+            <div class="bulletin-card">
+                <div class="bulletin-header">
+                    <h3>RÉPUBLIQUE DU SÉNÉGAL – Un Peuple, Un But, Une Foi</h3>
+                    <p>MINISTÈRE DE L'ÉDUCATION NATIONALE<br>IA Tamba – IEF Koumpentoum – École Mor Sylla<br>Année 2025-2026 – Classe CI – 3ème Trimestre</p>
+                </div>
+                <div class="bulletin-body">
+                    <h4>Élève : Dib BOP</h4>
+                    <table class="bulletin-table"><thead><tr><th>Discipline</th><th>Total / Barème</th><th>Appréciation</th></tr></thead><tbody><tr><td>Langue et Communication</td><td>8 / 10</td><td>Très Bien</td></tr><tr><td>Mathématiques</td><td>5 / 10</td><td>Passable</td></tr><tr><td>Éducation Religieuse</td><td>6 / 10</td><td>Bien</td></tr><tr><td>ANGLAIS</td><td>6 / 150</td><td>À renforcer</td></tr></tbody></table>
+                    <h4>Synthèse EFA</h4>
+                    <table class="bulletin-table"><thead><tr><th>Indicateur</th><th>Totaux</th><th>Moyenne /10</th><th>Rang</th></tr></thead><tbody><tr><td>Moyenne en Français</td><td>19.0 / 170</td><td>1.12</td><td>1er/2</td></tr><tr><td>Moyenne en Arabe</td><td>6.0 / 10</td><td>6.00</td><td>1er/2</td></tr><tr><td><strong>MOYENNE GÉNÉRALE</strong></td><td>25.0 / 180</td><td><strong>1.39</strong></td><td>1er/2</td></tr></tbody></table>
+                    <div class="signature"><span>Observations : Progression très limitée. Un accompagnement régulier est nécessaire.</span><span>L'ENSEIGNANT(E)<br>DIRECTEUR(TRICE)</span></div>
+                </div>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Bulletins automatiques</h3>
-                <p>Génération PDF, moyennes, appréciations.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Application mobile</h3>
-                <p>Disponible sur Android (Play Store) et bientôt iOS.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h3>Synchronisation cloud</h3>
-                <p>Accès en temps réel, sauvegarde sécurisée.</p>
+            <div class="bulletin-card">
+                <div class="bulletin-header"><h3>RÉPUBLIQUE DU SÉNÉGAL</h3><p>IA Tamba – IEF Koumpentoum – École Mor Sylla – CI – 3ème Trimestre</p></div>
+                <div class="bulletin-body"><h4>Élève : Hik JOM</h4>
+                <table class="bulletin-table"><thead><tr><th>Discipline</th><th>Total / Barème</th><th>Appréciation</th></tr></thead><tbody><tr><td>Langue et Communication</td><td>Absent</td><td>Absent</td></tr><tr><td>Mathématiques</td><td>Absent</td><td>Absent</td></tr><tr><td>Éducation Religieuse</td><td>Absent</td><td>Absent</td></tr><tr><td>ANGLAIS</td><td>3 / 150</td><td>À renforcer</td></tr></tbody></table>
+                <h4>Synthèse EFA</h4>
+                <table class="bulletin-table"><thead><tr><th>Indicateur</th><th>Totaux</th><th>Moyenne /10</th><th>Rang</th></tr></thead><tbody><tr><td>Moyenne en Français</td><td>3.0 / 150</td><td>0.20</td><td>2ème/2</td></tr><tr><td>Moyenne en Arabe</td><td>0.0 / 0</td><td>0.00</td><td>2ème/2</td></tr><tr><td><strong>MOYENNE GÉNÉRALE</strong></td><td>3.0 / 150</td><td><strong>0.20</strong></td><td>2ème/2</td></tr></tbody></table>
+                <div class="signature"><span>Observations : De nombreuses lacunes demeurent et nécessitent un renforcement.</span><span>L'ENSEIGNANT(E)<br>DIRECTEUR(TRICE)</span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Téléchargement par plateforme -->
-<section id="download" class="section platforms">
+<!-- Téléchargement -->
+<section id="download" class="section bg-light">
     <div class="container">
-        <h2 class="section-title">Disponible sur <span>toutes vos plateformes</span></h2>
-        <div class="platform-grid" id="platform-links">
-            <!-- Contenu dynamique selon userAgent -->
-        </div>
-    </div>
-</section>
-
-<!-- Contact / Support -->
-<section id="contact" class="section">
-    <div class="container">
-        <h2 class="section-title">Une question ? <span>Contactez-nous</span></h2>
-        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-            <p><i class="fas fa-envelope"></i> support@compo.sn</p>
-            <p><i class="fab fa-whatsapp"></i> +221 77 200 21 82</p>
-            <p><i class="fas fa-globe"></i> Diofdev – Partenaire technologique</p>
+        <h2 class="section-title">Téléchargez <span>Compo</span></h2>
+        <div class="download-grid">
+            <div class="download-card"><i class="fab fa-android" style="color:#3ddc84;"></i><h3>Android</h3><a href="https://play.google.com/store/apps/details?id=com.diofdev.compo" class="btn-download" target="_blank">Google Play</a></div>
+            <div class="download-card"><i class="fab fa-apple" style="color:#000;"></i><h3>iPhone / iPad</h3><a href="https://youtube.com/shorts/QKqslBnI77I?si=4nrxqvGhcDP7Lfxk" class="btn-download" target="_blank">Guide d'installation</a></div>
+            <div class="download-card"><i class="fas fa-desktop"></i><h3>Ordinateur Windows</h3><a href="https://educationsntest-my.sharepoint.com/shared?id=%2Fpersonal%2Falioune%5Fsenghor1%5Feducation%5Fsn%2FDocuments%2FPi%C3%A8ces%20jointes%2FCompo%5FOrdinateur%20Mise%20%C3%A0%20jour%2Eexe&parent=%2Fpersonal%2Falioune%5Fsenghor1%5Feducation%5Fsn%2FDocuments%2FPi%C3%A8ces%20jointes&ct=1775658085122&or=OWA%2DNT%2DMail&cid=15ef66fb%2Df272%2D71a4%2D7487%2Dbdf425b912c7&ga=1" class="btn-download" target="_blank">Télécharger .exe</a></div>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 Compo – Tous droits réservés. Développé par Diofdev.</p>
+    <p>&copy; 2026 Compo – Développé par Diofdev. Solution de gestion scolaire automatisée.</p>
 </footer>
 
-<!-- Script principal (redirection + affichage dynamique) -->
 <script>
-    // ========== VERSION LISIBLE DE app.js (sans obfuscation pour la démo) ==========
-    // Ce script gère à la fois l'affichage des boutons ET la redirection conditionnelle
-
     (function() {
-        // Configuration
-        const CONFIG = {
-            ANDROID_DEEPLINK: 'market://details?id=com.diofdev.compo',
-            ANDROID_FALLBACK: 'https://play.google.com/store/apps/details?id=com.diofdev.compo',
-            IOS_TUTORIAL: 'https://youtube.com/shorts/QKqslBnI77I?si=4nrxqvGhcDP7Lfxk',
-            TARGET_DATE_UTC: Date.UTC(2026, 3, 5, 11, 0, 0)
-        };
+        // Configuration des liens
+        const ANDROID_STORE = "https://play.google.com/store/apps/details?id=com.diofdev.compo";
+        const IOS_TUTO = "https://youtube.com/shorts/QKqslBnI77I?si=4nrxqvGhcDP7Lfxk";
+        const PC_EXE = "https://educationsntest-my.sharepoint.com/shared?id=%2Fpersonal%2Falioune%5Fsenghor1%5Feducation%5Fsn%2FDocuments%2FPi%C3%A8ces%20jointes%2FCompo%5FOrdinateur%20Mise%20%C3%A0%20jour%2Eexe&parent=%2Fpersonal%2Falioune%5Fsenghor1%5Feducation%5Fsn%2FDocuments%2FPi%C3%A8ces%20jointes&ct=1775658085122&or=OWA%2DNT%2DMail&cid=15ef66fb%2Df272%2D71a4%2D7487%2Dbdf425b912c7&ga=1";
 
-        // Détections
-        function isMobile() {
-            return /Mobi|Android|iPhone|BlackBerry|Windows Phone/i.test(navigator.userAgent) && window.innerWidth <= 768;
-        }
-        function isAndroid() {
-            return /Android/i.test(navigator.userAgent);
-        }
-        function isIOS() {
-            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-        function isDesktop() {
-            return !isMobile();
-        }
-        function isAfterDeadline() {
-            return Date.now() >= CONFIG.TARGET_DATE_UTC;
-        }
+        const ua = navigator.userAgent;
+        const isAndroid = /Android/i.test(ua);
+        const isIOS = /iPhone|iPad|iPod/i.test(ua);
+        const isMobile = /Mobi|Android|iPhone|BlackBerry|Windows Phone/i.test(ua) && window.innerWidth <= 768;
 
-        // Affichage dynamique des boutons selon la plateforme (sans redirection immédiate)
-        function displayPlatformButtons() {
-            const heroButtons = document.getElementById('dynamic-buttons');
-            const platformDiv = document.getElementById('platform-links');
-            if (!heroButtons || !platformDiv) return;
-
-            if (isAndroid()) {
-                heroButtons.innerHTML = `
-                    <a href="${CONFIG.ANDROID_FALLBACK}" class="btn-store" target="_blank">
-                        <i class="fab fa-android"></i> Télécharger sur Google Play
-                    </a>
-                    <a href="${CONFIG.ANDROID_DEEPLINK}" class="btn-store btn-outline-light">Ouvrir dans Play Store</a>
-                `;
-                platformDiv.innerHTML = `
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-android"></i></div>
-                        <h3>Android</h3>
-                        <p>Version 5.0+</p>
-                        <a href="${CONFIG.ANDROID_FALLBACK}" class="btn-store" style="background:#3ddc84; color:#000;">Google Play</a>
-                        <div class="qrcode">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(CONFIG.ANDROID_FALLBACK)}" alt="QR Code Android">
-                        </div>
-                    </div>
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-apple"></i></div>
-                        <h3>iPhone / iPad</h3>
-                        <p>Bientôt disponible</p>
-                        <a href="${CONFIG.IOS_TUTORIAL}" class="btn-store" style="background:#000;">Guide d'installation</a>
-                    </div>
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fas fa-laptop"></i></div>
-                        <h3>Ordinateur</h3>
-                        <p>Version web</p>
-                        <a href="#" class="btn-store" style="background:#475569;">Accès web (bientôt)</a>
-                    </div>
-                `;
-            } 
-            else if (isIOS()) {
-                heroButtons.innerHTML = `
-                    <a href="${CONFIG.IOS_TUTORIAL}" class="btn-store" target="_blank">
-                        <i class="fab fa-apple"></i> Guide d'installation iOS
-                    </a>
-                `;
-                platformDiv.innerHTML = `
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-apple"></i></div>
-                        <h3>iPhone / iPad</h3>
-                        <p>Installation via tutoriel</p>
-                        <a href="${CONFIG.IOS_TUTORIAL}" class="btn-store" style="background:#000;">Voir le guide</a>
-                        <div class="qrcode">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(CONFIG.IOS_TUTORIAL)}" alt="QR Code iOS">
-                        </div>
-                    </div>
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-android"></i></div>
-                        <h3>Android</h3>
-                        <p>Disponible sur Play Store</p>
-                        <a href="${CONFIG.ANDROID_FALLBACK}" class="btn-store" style="background:#3ddc84; color:#000;">Google Play</a>
-                    </div>
-                `;
-            } 
-            else { // Desktop
-                heroButtons.innerHTML = `
-                    <a href="${CONFIG.ANDROID_FALLBACK}" class="btn-store" target="_blank">
-                        <i class="fab fa-android"></i> Version Android
-                    </a>
-                    <a href="${CONFIG.IOS_TUTORIAL}" class="btn-store btn-outline-light" target="_blank">
-                        <i class="fab fa-apple"></i> Guide iOS
-                    </a>
-                `;
-                platformDiv.innerHTML = `
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-android"></i></div>
-                        <h3>Android</h3>
-                        <a href="${CONFIG.ANDROID_FALLBACK}" class="btn-store">Télécharger APK / Play Store</a>
-                    </div>
-                    <div class="platform-item">
-                        <div class="platform-icon"><i class="fab fa-apple"></i></div>
-                        <h3>iOS</h3>
-                        <a href="${CONFIG.IOS_TUTORIAL}" class="btn-store">Tutoriel d'installation</a>
-                    </div>
-                `;
+        // Injection dynamique des boutons hero
+        const heroDiv = document.getElementById('dynamic-buttons');
+        if (heroDiv) {
+            if (isAndroid) {
+                heroDiv.innerHTML = `<a href="${ANDROID_STORE}" class="btn-store" target="_blank"><i class="fab fa-android"></i> Télécharger sur Google Play</a>
+                                      <a href="${PC_EXE}" class="btn-store btn-outline-light"><i class="fas fa-desktop"></i> Version Ordinateur</a>`;
+            } else if (isIOS) {
+                heroDiv.innerHTML = `<a href="${IOS_TUTO}" class="btn-store" target="_blank"><i class="fab fa-apple"></i> Guide d'installation iOS</a>
+                                      <a href="${PC_EXE}" class="btn-store btn-outline-light"><i class="fas fa-desktop"></i> Version Ordinateur</a>`;
+            } else {
+                heroDiv.innerHTML = `<a href="${ANDROID_STORE}" class="btn-store" target="_blank"><i class="fab fa-android"></i> Android</a>
+                                      <a href="${IOS_TUTO}" class="btn-store" target="_blank"><i class="fab fa-apple"></i> Guide iOS</a>
+                                      <a href="${PC_EXE}" class="btn-store btn-outline-light"><i class="fas fa-desktop"></i> Ordinateur</a>`;
             }
         }
 
-        // Redirection conditionnelle (après le 5 avril 2026, 11h GMT)
-        function conditionalRedirect() {
-            if (!isMobile()) return; // Uniquement sur mobile
-            if (!isAfterDeadline()) return;
+        // Redirection conditionnelle (après 5 avril 2026 11h GMT)
+        const TARGET_DATE = Date.UTC(2026, 3, 5, 11, 0, 0);
+        function afterDeadline() { return Date.now() >= TARGET_DATE; }
 
-            if (isIOS()) {
-                window.location.replace(CONFIG.IOS_TUTORIAL);
-            } else if (isAndroid()) {
-                // Tentative deep link via iframe, fallback après 500ms
+        if (isMobile && afterDeadline()) {
+            if (isIOS) {
+                window.location.replace(IOS_TUTO);
+            } else if (isAndroid) {
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
-                iframe.src = CONFIG.ANDROID_DEEPLINK;
+                iframe.src = "market://details?id=com.diofdev.compo";
                 document.body.appendChild(iframe);
                 setTimeout(() => {
                     document.body.removeChild(iframe);
                     if (document.body && document.body.innerHTML !== '') {
-                        window.location.replace(CONFIG.ANDROID_FALLBACK);
+                        window.location.replace(ANDROID_STORE);
                     }
                 }, 500);
             }
         }
 
-        // Anti-debug / Anti-inspection (version simplifiée mais efficace)
-        function antiDebug() {
-            document.addEventListener('contextmenu', (e) => e.preventDefault());
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
-                    e.preventDefault();
-                }
-            });
-            let lastTime = 0;
-            setInterval(() => {
-                if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-                    document.body.innerHTML = '';
-                    window.location.replace('about:blank');
-                }
-            }, 1000);
-        }
-
-        // Initialisation
-        displayPlatformButtons();
-        conditionalRedirect();
-        antiDebug();
+        // Anti-debug basique
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+        setInterval(() => {
+            if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+                document.body.innerHTML = '';
+                window.location.replace('about:blank');
+            }
+        }, 1000);
     })();
 </script>
 </body>
