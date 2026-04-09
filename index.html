@@ -277,14 +277,45 @@
             .bulletin-table th, .bulletin-table td { padding: 6px; font-size: 0.85rem; }
         }
 
-        /* ---------- BOUTON FLOTTANT WHATSAPP ---------- */
+        /* ---------- BOUTON FLOTTANT WHATSAPP + RECTANGLE "CONTACTEZ-NOUS" ---------- */
         .whatsapp-float {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 1000;
-            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
         }
+        
+        /* Le petit rectangle "Contactez-nous" bien visible */
+        .contact-badge {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .contact-badge i {
+            font-size: 1.2rem;
+        }
+        .contact-badge:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+        
+        /* Lien WhatsApp */
         .whatsapp-float-link {
             display: flex;
             align-items: center;
@@ -312,11 +343,12 @@
         .whatsapp-float-link:hover i {
             transform: scale(1.02);
         }
-        /* Tooltip (texte au survol) */
+        
+        /* Tooltip (optionnel, gardé pour le survol) */
         .whatsapp-tooltip {
             position: absolute;
             right: 70px;
-            bottom: 15px;
+            bottom: 18px;
             background: #1e293b;
             color: white;
             padding: 8px 14px;
@@ -329,7 +361,6 @@
             transition: all 0.2s ease;
             pointer-events: none;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            font-family: 'Segoe UI', Roboto, sans-serif;
         }
         .whatsapp-tooltip::after {
             content: '';
@@ -341,11 +372,13 @@
             border-style: solid;
             border-color: transparent transparent transparent #1e293b;
         }
-        .whatsapp-float:hover .whatsapp-tooltip {
+        .whatsapp-float-link:hover + .whatsapp-tooltip,
+        .whatsapp-float-link:focus + .whatsapp-tooltip {
             opacity: 1;
             visibility: visible;
             transform: translateX(-4px);
         }
+        
         /* Animation d'appel douce */
         @keyframes subtle-pulse {
             0% {
@@ -358,11 +391,21 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-        /* Responsive : légèrement plus petit sur mobile */
+        
+        /* Responsive : ajustement pour petits écrans */
         @media (max-width: 640px) {
             .whatsapp-float {
                 bottom: 18px;
                 right: 18px;
+                gap: 8px;
+            }
+            .contact-badge {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .contact-badge i {
+                font-size: 1rem;
             }
             .whatsapp-float-link {
                 width: 52px;
@@ -375,7 +418,6 @@
                 right: 62px;
                 font-size: 0.75rem;
                 padding: 5px 10px;
-                white-space: nowrap;
             }
         }
     </style>
@@ -497,10 +539,16 @@
     <p>&copy; 2026 Compo – Développé par Diofdev. Solution de gestion scolaire automatisée.</p>
 </footer>
 
-<!-- BOUTON FLOTTANT WHATSAPP : support direct -->
+<!-- BOUTON FLOTTANT WHATsAPP + RECTANGLE CONTACT -->
 <div class="whatsapp-float">
+    <!-- Petit rectangle "Contactez-nous" très visible au-dessus de l'icône -->
+    <div class="contact-badge" onclick="window.open('https://wa.me/221781234567?text=Bonjour%2C%20je%20souhaite%20obtenir%20de%20l%27aide%20ou%20plus%20d%27informations%20sur%20l%27application%20Compo.%20Merci%20!', '_blank')">
+        <i class="fas fa-comment-dots"></i> Contactez-nous
+    </div>
+    
+    <!-- Lien WhatsApp (icône flottante classique) -->
     <a class="whatsapp-float-link" 
-       href="https://wa.me/221772002182?text=Bonjour%2C%20je%20souhaite%20obtenir%20de%20l%27aide%20ou%20plus%20d%27informations%20sur%20l%27application%20Compo.%20Merci%20!" 
+       href="https://wa.me/221781234567?text=Bonjour%2C%20je%20souhaite%20obtenir%20de%20l%27aide%20ou%20plus%20d%27informations%20sur%20l%27application%20Compo.%20Merci%20!" 
        target="_blank" 
        rel="noopener noreferrer"
        aria-label="Contacter le support via WhatsApp">
