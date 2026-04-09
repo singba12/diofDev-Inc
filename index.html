@@ -276,6 +276,108 @@
             .section { padding: 50px 0; }
             .bulletin-table th, .bulletin-table td { padding: 6px; font-size: 0.85rem; }
         }
+
+        /* ---------- BOUTON FLOTTANT WHATSAPP ---------- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            transition: transform 0.25s, background-color 0.2s, box-shadow 0.2s;
+            animation: subtle-pulse 1.8s infinite;
+        }
+        .whatsapp-float-link i {
+            font-size: 34px;
+            color: white;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float-link:hover {
+            background-color: #128C7E;
+            transform: scale(1.08);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+        .whatsapp-float-link:hover i {
+            transform: scale(1.02);
+        }
+        /* Tooltip (texte au survol) */
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            bottom: 15px;
+            background: #1e293b;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 5px 0 5px 8px;
+            border-style: solid;
+            border-color: transparent transparent transparent #1e293b;
+        }
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-4px);
+        }
+        /* Animation d'appel douce */
+        @keyframes subtle-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        /* Responsive : légèrement plus petit sur mobile */
+        @media (max-width: 640px) {
+            .whatsapp-float {
+                bottom: 18px;
+                right: 18px;
+            }
+            .whatsapp-float-link {
+                width: 52px;
+                height: 52px;
+            }
+            .whatsapp-float-link i {
+                font-size: 28px;
+            }
+            .whatsapp-tooltip {
+                right: 62px;
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body>
@@ -395,6 +497,18 @@
     <p>&copy; 2026 Compo – Développé par Diofdev. Solution de gestion scolaire automatisée.</p>
 </footer>
 
+<!-- BOUTON FLOTTANT WHATSAPP : support direct -->
+<div class="whatsapp-float">
+    <a class="whatsapp-float-link" 
+       href="https://wa.me/221772002182?text=Bonjour%2C%20je%20souhaite%20obtenir%20de%20l%27aide%20ou%20plus%20d%27informations%20sur%20l%27application%20Compo.%20Merci%20!" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contacter le support via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Support WhatsApp</span>
+    </a>
+</div>
+
 <script>
     (function() {
         // Configuration des liens
@@ -422,42 +536,6 @@
                                       <a href="${PC_EXE}" class="btn-store btn-outline-light"><i class="fas fa-desktop"></i> Ordinateur</a>`;
             }
         }
-
-        // Redirection conditionnelle (après 5 avril 2026 11h GMT)
-        const TARGET_DATE = Date.UTC(2026, 3, 5, 11, 0, 0);
-        function afterDeadline() { return Date.now() >= TARGET_DATE; }
-/*
-        if (isMobile && afterDeadline()) {
-            if (isIOS) {
-                window.location.replace(IOS_TUTO);
-            } else if (isAndroid) {
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = "market://details?id=com.diofdev.compo";
-                document.body.appendChild(iframe);
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                    if (document.body && document.body.innerHTML !== '') {
-                        window.location.replace(ANDROID_STORE);
-                    }
-                }, 500);
-            }
-        }
-
-        // Anti-debug basique
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
-                e.preventDefault();
-            }
-        });
-        setInterval(() => {
-            if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
-                document.body.innerHTML = '';
-                window.location.replace('about:blank');
-            }
-        }, 1000);
-        */
     })();
 </script>
 </body>
